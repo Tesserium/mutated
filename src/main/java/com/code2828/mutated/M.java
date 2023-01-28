@@ -1,5 +1,8 @@
 package com.code2828.mutated;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder;
 import net.fabricmc.fabric.api.event.registry.RegistryAttribute;
@@ -10,15 +13,15 @@ import net.minecraft.registry.SimpleDefaultedRegistry;
 import net.minecraft.util.Identifier;
 
 public class M implements ModInitializer {
-	public static final SimpleDefaultedRegistry<Mutation> MUTATION = FabricRegistryBuilder
-			.createDefaulted(Mutation.class, new Identifier("mutated", "mutation"), new Identifier("mutated", "brisk"))
+	public static final Logger LOGGER = LoggerFactory.getLogger("mutated");
+	protected static final SimpleDefaultedRegistry<Mutation> MUTATION = FabricRegistryBuilder
+			.createDefaulted(Mutation.class, new Identifier("mutated", "mutation"), new Identifier("mutated", "experience_boost"))
 			.attribute(RegistryAttribute.SYNCED).buildAndRegister();
-	public static final Mutation MUT_BRISK = new Mutation(MutationCategory.GOOD, 0x228A28);
-	public static final MutPotionItem POTION_OF_MUTATION = new MutPotionItem(new FabricItemSettings());
+	protected static final MutPotionItem POTION_OF_MUTATION = new MutPotionItem(new FabricItemSettings());
 
 	@Override
 	public void onInitialize() {
-		Registry.register(MUTATION, new Identifier("mutated", "brisk"), MUT_BRISK);
+		Registry.register(MUTATION, new Identifier("mutated", "experience_boost"), Mutations.EXPERIENCE_BOOST);
 		Registry.register(Registries.ITEM, new Identifier("mutated","potion"), POTION_OF_MUTATION);
 	}
 
