@@ -1,6 +1,7 @@
 package com.code2828.mutated;
 
 import java.util.List;
+import java.util.Random;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -18,26 +19,37 @@ import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
-public class MutPotionItem extends PotionItem{
+public class MutPotionItem extends PotionItem {
+
+	private static final Random RAND = new Random();
 
 	public MutPotionItem(Settings settings) {
 		super(settings);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-		PlayerEntity playerEntity = user instanceof PlayerEntity ? (PlayerEntity)user : null;
+		PlayerEntity playerEntity = user instanceof PlayerEntity ? (PlayerEntity) user : null;
 		if (playerEntity instanceof ServerPlayerEntity) {
-			Criteria.CONSUME_ITEM.trigger((ServerPlayerEntity)playerEntity, stack);
+			Criteria.CONSUME_ITEM.trigger((ServerPlayerEntity) playerEntity, stack);
 		}
-		
-		if(!world.isClient())
-		{
-			Mutations.EXPERIENCE_BOOST.apply(playerEntity);
-			//Mutations.FALL_VULNERABILITY.apply(playerEntity);
+
+		if (!world.isClient()) {
+			// remove some old ones
+			for (Mutation mut : Mutations.LIST) {
+				int l = mut.entity(playerEntity);
+				if (l > 0 && RAND.nextBoolean()) {
+					mut.remove(playerEntity);
+				}
+			}
+			// apply some new ones
+			if (RAND.nextBoolean())
+				Mutations.EXPERIENCE_BOOST.increase(playerEntity);
+			else
+				Mutations.EXPERIENCE_DEPLETION.increase(playerEntity);
 		}
-			
+
 		if (playerEntity != null) {
 			playerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
 			if (!playerEntity.getAbilities().creativeMode) {
@@ -59,7 +71,7 @@ public class MutPotionItem extends PotionItem{
 		user.emitGameEvent(GameEvent.DRINK);
 		return stack;
 	}
-	
+
 	@Override
 	public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
 		tooltip.add(Text.translatable("item.mutated.potion.tooltip").formatted(Formatting.BOLD));

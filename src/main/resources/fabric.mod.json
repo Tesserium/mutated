@@ -1,39 +1,35 @@
 {
-  "schemaVersion": 1,
-  "id": "mutated",
-  "version": "0.1",
-
-  "name": "Mutated",
-  "description": "This mod adds potion of mutation to Minecraft and some mutations, based on Dungeon Crawl Stone Soup.",
-  "authors": [
-    "Me!"
-  ],
-  "contact": {
-    "homepage": "https://github.com/Tesserium/mutated",
-    "sources": "https://github.com/Tesserium/mutated"
-  },
-
-  "license": "<unavaliable>",
-  "icon": "assets/mutated/icon.png",
-
-  "environment": "*",
-  "entrypoints": {
-    "main": [
-      "com.code2828.mutated.M"
-    ]
-  },
-  "mixins": [
-  	"modid.mixins.json",
-  	"mutated.mixins.json"
-  ],
-
-  "depends": {
-    "fabricloader": ">=0.14.11",
-    "fabric-api": "*",
-    "minecraft": "~1.19.3",
-    "java": ">=17"
-  },
-  "suggests": {
-    "another-mod": "*"
-  }
+	"schemaVersion": 1,
+	"id": "mutated",
+	"version": "0.0",
+	"name": "Mutated",
+	"description": "This mod adds potion of mutation to Minecraft and some mutations, based on Dungeon Crawl Stone Soup.",
+	"authors": [
+		"Haocheng Zhang"
+	],
+	"contact": {
+		"homepage": "https://github.com/Tesserium/mutated",
+		"sources": "https://github.com/Tesserium/mutated"
+	},
+	"license": "MIT License",
+	"icon": "assets/mutated/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.code2828.mutated.M"
+		]
+	},
+	"mixins": [
+		"modid.mixins.json",
+		"mutated.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.11",
+		"fabric-api": "*",
+		"minecraft": "~1.19.3",
+		"java": ">=17"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
 }

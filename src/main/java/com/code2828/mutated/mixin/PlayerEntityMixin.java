@@ -13,7 +13,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 
 @Mixin(PlayerEntity.class)
-public abstract class PlayerEntityMixin extends LivingEntity{
+public abstract class PlayerEntityMixin extends LivingEntity {
 
 	protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
 		super(entityType, world);
@@ -21,11 +21,17 @@ public abstract class PlayerEntityMixin extends LivingEntity{
 	}
 
 	@ModifyVariable(at = @At("HEAD"), method = "addExperience(Lint;)V")
-	private int applyExperienceBoost(int experience) {
-		if(Mutations.EXPERIENCE_BOOST.hasEntity((PlayerEntity)(Object)this))
-		{
-			experience*=2;
+	private int alterExperience(int experience) {
+		PlayerEntity thisEntity = (PlayerEntity) (Object) this;
+		double e = experience;
+		int j = Mutations.EXPERIENCE_BOOST.entity(thisEntity);
+		int k = Mutations.EXPERIENCE_DEPLETION.entity(thisEntity);
+		if (j > 0) {
+			e *= Math.pow(2, Math.log(j + 1));
 		}
-		return experience;
+		if (k > 0) {
+			e /= Math.pow(2, Math.log(k + 1));
+		}
+		return (int) e;
 	}
 }

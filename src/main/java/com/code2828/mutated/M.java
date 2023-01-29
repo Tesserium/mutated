@@ -15,14 +15,15 @@ import net.minecraft.util.Identifier;
 public class M implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("mutated");
 	protected static final SimpleDefaultedRegistry<Mutation> MUTATION = FabricRegistryBuilder
-			.createDefaulted(Mutation.class, new Identifier("mutated", "mutation"), new Identifier("mutated", "experience_boost"))
+			.createDefaulted(Mutation.class, new Identifier("mutated", "mutation"),
+					new Identifier("mutated", "experience_boost"))
 			.attribute(RegistryAttribute.SYNCED).buildAndRegister();
 	protected static final MutPotionItem POTION_OF_MUTATION = new MutPotionItem(new FabricItemSettings());
 
 	@Override
 	public void onInitialize() {
 		Registry.register(MUTATION, new Identifier("mutated", "experience_boost"), Mutations.EXPERIENCE_BOOST);
-		Registry.register(Registries.ITEM, new Identifier("mutated","potion"), POTION_OF_MUTATION);
+		Registry.register(Registries.ITEM, new Identifier("mutated", "potion"), POTION_OF_MUTATION);
 	}
 
 }
