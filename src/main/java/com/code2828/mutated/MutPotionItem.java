@@ -44,10 +44,15 @@ public class MutPotionItem extends PotionItem {
 				}
 			}
 			// apply some new ones
-			if (RAND.nextBoolean())
-				Mutations.EXPERIENCE_BOOST.increase(playerEntity);
-			else
-				Mutations.EXPERIENCE_DEPLETION.increase(playerEntity);
+			if (RAND.nextBoolean()) {
+				int a = Mutations.EXPERIENCE_BOOST.increase(playerEntity);
+				if (a < 0)
+					Mutations.EXPERIENCE_BOOST.apply(playerEntity);
+			} else {
+				int b = Mutations.EXPERIENCE_DEPLETION.increase(playerEntity);
+				if (b < 0)
+					Mutations.EXPERIENCE_DEPLETION.apply(playerEntity);
+			}
 		}
 
 		if (playerEntity != null) {
