@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "mutated",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"name": "Mutated",
 	"description": "This mod adds potion of mutation to Minecraft and some mutations, based on Dungeon Crawl Stone Soup.",
 	"authors": [

@@ -32,6 +32,6 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 		if (k > 0) {
 			e /= Math.pow(2, Math.log(k + 1));
 		}
-		return (int) e;
+		return (int) Math.round(e + 0.25);
 	}
 }

@@ -1,9 +1,12 @@
-# Fabric Example Mod
+# Mutated
 
-## Setup
+A mod that adds potion of mutation and various mutations to Minecraft. Inspired and based on [Dungeon Crawl Stone Soup](https://crawl.develz.org/).
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
-
-## License
-
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+## List of Mutations
+### Good Mutations
+* Rapid Learner (`experience_boost`)
+### Bad Mutations
+* Clumsy Learner (`experience_depletion`) 
+### Neutral Mutations
+### 'Either' Mutations
+### Cosmetic Mutations

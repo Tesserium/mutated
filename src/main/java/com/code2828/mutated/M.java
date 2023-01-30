@@ -23,6 +23,8 @@ public class M implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		Registry.register(MUTATION, new Identifier("mutated", "experience_boost"), Mutations.EXPERIENCE_BOOST);
+		Registry.register(MUTATION, new Identifier("mutated", "experience_depletion"), Mutations.EXPERIENCE_DEPLETION);
+		Registry.register(MUTATION, new Identifier("mutated", "fall_vulnerability"), Mutations.FALL_VULNERABILITY);
 		Registry.register(Registries.ITEM, new Identifier("mutated", "potion"), POTION_OF_MUTATION);
 	}
 

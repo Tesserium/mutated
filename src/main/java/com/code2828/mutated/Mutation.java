@@ -66,13 +66,17 @@ public abstract class Mutation {
 	/**
 	 * @param playerEntity the player
 	 * @param level
-	 * @return -1 if does not exist, the level after operation otherwise
+	 * @return -1 if does not exist, 0 if reached max level, the level after
+	 *         operation otherwise
 	 */
 	public int increase(PlayerEntity playerEntity, int level) {
 		for (Pair<UUID, Integer> pair : affectedPlayers) {
 			if (playerEntity.getUuid().equals(pair.getLeft())) {
+				if (pair.getRight() + level >= maxLevel) {
+					return 0;
+				}
 				pair.setRight(pair.getRight() + level);
-				return level;
+				return pair.getRight();
 			}
 		}
 		return -1;
@@ -85,7 +89,7 @@ public abstract class Mutation {
 	/**
 	 * @param playerEntity the player
 	 * @param level        levels for removal
-	 * @return -1 if the player does not have this mutation, level of mutation after
+	 * @return -1 if the player does not have this mutation, 0 if will be removed, level of mutation after
 	 *         removal otherwise
 	 */
 	public int decrease(PlayerEntity playerEntity, int level) {
