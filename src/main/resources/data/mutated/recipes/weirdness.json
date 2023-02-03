@@ -1,0 +1,38 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"category": "mutated",
+	"group": "weirdness",
+	"ingredients": [
+		{
+			"item": "minecraft:blue_glazed_terracotta"
+		},
+		{
+			"item": "minecraft:moss_carpet"
+		},
+		{
+			"item": "minecraft:pointed_dripstone"
+		},
+		{
+			"item": "minecraft:turtle_helmet"
+		},
+		{
+			"item": "minecraft:spider_eye"
+		},
+		{
+			"item": "minecraft:amethyst_shard"
+		},
+		{
+			"item": "minecraft:ender_eye"
+		},
+		{
+			"item": "minecraft:phantom_membrane"
+		},
+		{
+			"item": "minecraft:cobweb"
+		}
+	],
+	"result": {
+		"item": "mutated:weirdness",
+		"count":3
+	}
+}

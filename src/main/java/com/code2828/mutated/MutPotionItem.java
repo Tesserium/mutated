@@ -6,6 +6,7 @@ import java.util.Random;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Math;
 
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
@@ -18,6 +19,7 @@ import net.minecraft.stat.Stats;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Rarity;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
@@ -25,9 +27,13 @@ public class MutPotionItem extends PotionItem {
 
 	private static final Random RAND = new Random();
 
-	public MutPotionItem(Settings settings) {
-		super(settings);
-		// TODO Auto-generated constructor stub
+	public MutPotionItem() {
+		super(new FabricItemSettings().rarity(Rarity.UNCOMMON));
+	}
+
+	@Override
+	public ItemStack getDefaultStack() {
+		return new ItemStack(this);
 	}
 
 	@Override
@@ -37,7 +43,9 @@ public class MutPotionItem extends PotionItem {
 			Criteria.CONSUME_ITEM.trigger((ServerPlayerEntity) playerEntity, stack);
 		}
 
-		if (!world.isClient()) {
+		if (!world.isClient() && playerEntity != null) {
+			playerEntity.sendMessage(
+					((MutableText) Text.translatable("mutated.msg.urbodychanges")).formatted(Formatting.BLACK));
 			// remove some old ones
 			int removal = Math.abs(RAND.nextInt()) % 3 + 1;
 			int prob1 = Mutations.LIST.size() / removal;
@@ -46,7 +54,7 @@ public class MutPotionItem extends PotionItem {
 				if (l > 0 && RAND.nextInt() % (prob1 <= 0 ? 1 : prob1) == 0) {
 					int r = mut.remove(playerEntity);
 					if (r >= 0) {
-						playerEntity.sendMessage(((MutableText) Text.of("Removed mutation "))
+						playerEntity.sendMessage(((MutableText) Text.translatable("mutated.msg.removemut"))
 								.append(Text.translatable(M.MUTATION.getId(mut).toTranslationKey())));
 					}
 				}
@@ -59,12 +67,14 @@ public class MutPotionItem extends PotionItem {
 					int a = mut.increase(playerEntity);
 					if (a < 0) {
 						mut.apply(playerEntity);
-						playerEntity.sendMessage(((MutableText) Text.of("Applied mutation "))
+						playerEntity.sendMessage(((MutableText) Text.translatable("mutated.msg.applymut"))
 								.append(Text.translatable(M.MUTATION.getId(mut).toTranslationKey())));
 					} else if (a > 0) {
-						playerEntity.sendMessage(((MutableText) Text.of("Increased level of mutation "))
+						playerEntity.sendMessage(((MutableText) Text.translatable("mutated.msg.increasemut"))
 								.append(Text.translatable(M.MUTATION.getId(mut).toTranslationKey())
-										.append(Text.of(" to " + Integer.toString(a)))));
+										.append(Text.translatable("mutated.msg.increasemut_to"))
+										.append(Text.of(Integer.toString(a)))
+										.append(Text.translatable("mutated.msg.increasemut_lev"))));
 					}
 				}
 			}

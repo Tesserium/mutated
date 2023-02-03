@@ -1,5 +1,14 @@
 {
 	"item.mutated.potion": "Potion of Mutation",
 	"item.mutated.potion.effect.empty": "Potion of Mutation",
-	"item.mutated.potion.tooltip": "Get Mutated!"
+	"item.mutated.potion.tooltip": "Get Mutated!",
+	"mutated.experience_boost": "Rapid Learner",
+	"mutated.experience_depletion": "Clumsy Learner",
+	"mutated.fall_vulnerability": "Gravitus Affinity",
+	"mutated.msg.urbodychanges": "Your body changes rapidly!",
+	"mutated.msg.removemut": "Removed mutation ",
+	"mutated.msg.applymut": "Applied mutation ",
+	"mutated.msg.increasemut": "Increased level of mutation ",
+	"mutated.msg.increasemut_to": " to ",
+	"mutated.msg.increasemut_lev": ""
 }

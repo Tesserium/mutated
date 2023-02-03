@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "misc",
+	"group": "boat",
+	"key": {
+		"1": {
+			"item": "minecraft:potion"
+		},
+		"#": {
+			"item": "mutated:weirdness"
+		}
+	},
+	"pattern": [
+		" # ",
+		"#1#",
+		" # "
+	],
+	"result": {
+		"item": "mutated:potion"
+	}
+}

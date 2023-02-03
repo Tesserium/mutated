@@ -1,0 +1,14 @@
+{
+	"item.mutated.potion": "畸变药水",
+	"item.mutated.potion.effect.empty": "畸变药水",
+	"item.mutated.potion.tooltip": "身体的变换能带给你无穷的力量！",
+	"mutated.experience_boost": "“学霸”",
+	"mutated.experience_depletion": "“学渣”",
+	"mutated.fall_vulnerability": "“地球的宠爱”",
+	"mutated.msg.urbodychanges": "你的身体正在疾速地变幻！",
+	"mutated.msg.removemut": "移除了畸变",
+	"mutated.msg.applymut": "增加了畸变",
+	"mutated.msg.increasemut": "将畸变",
+	"mutated.msg.increasemut_to": "加强至",
+	"mutated.msg.increasemut_lev": "级"
+}
