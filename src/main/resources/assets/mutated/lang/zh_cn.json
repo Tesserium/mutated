@@ -1,7 +1,8 @@
 {
 	"item.mutated.potion": "畸变药水",
 	"item.mutated.potion.effect.empty": "畸变药水",
-	"item.mutated.potion.tooltip": "身体的变换能带给你无穷的力量！",
+	"item.mutated.potion.tooltip": "畸变能带给你无穷的力量！",
+	"item.mutated.weirdness": "纯纯的鬼畜",
 	"mutated.experience_boost": "“学霸”",
 	"mutated.experience_depletion": "“学渣”",
 	"mutated.fall_vulnerability": "“地球的宠爱”",
