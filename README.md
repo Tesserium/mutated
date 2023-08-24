@@ -1,6 +1,6 @@
 # Mutated
 
-A mod that adds potion of mutation and various mutations to Minecraft. Inspired and based on [Dungeon Crawl Stone Soup](https://crawl.develz.org/).
+A mod that adds potion of mutation and various mutations to Minecraft. Inspired and somewhat based on [Dungeon Crawl Stone Soup](https://crawl.develz.org/).
 
 ## List of Mutations
 ### Good Mutations
